@@ -10,13 +10,16 @@ switch (comando) {
         console.log(tarea);
         break;
     case 'listar':
-        let listado = porHacer.getListado();
-
-        for (const tarea of listado) {
-            console.log(colors.green('=============Por Hacer=============='));
-            console.log(tarea.descripcion);
-            console.log('Estado:', tarea.completado === "true" ? colors.blue(tarea.completado) : colors.red(tarea.completado));
-            console.log(colors.green('===================================='));
+        let listado = porHacer.getListado(argv.completado);
+        if (listado.length > 0) {
+            for (const tarea of listado) {
+                console.log(colors.green('=============Por Hacer=============='));
+                console.log(tarea.descripcion);
+                console.log('Estado:', tarea.completado === "true" ? colors.blue(tarea.completado) : colors.red(tarea.completado));
+                console.log(colors.green('===================================='));
+            }
+        } else {
+            console.log("No hay resultados");
         }
         break;
     case 'actualizar':

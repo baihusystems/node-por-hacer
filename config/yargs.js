@@ -20,7 +20,14 @@ const argv = require('yargs')
     .command('borrar', 'Elimina una tarea', {
         descripcion
     })
-    .help()
+    .command('listar', 'Listar tareas', {
+        completado: {
+            alias: 'c',
+            default: 'all'
+        }
+    })
+
+.help()
     .argv;
 
 module.exports = {

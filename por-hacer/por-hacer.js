@@ -33,9 +33,17 @@ const cargarDB = () => {
     }
 }
 
-const getListado = () => {
+const getListado = (completado) => {
     cargarDB();
-    return listadopPorHacer;
+    let busqueda;
+    if (completado == 'all') {
+        return listadopPorHacer;
+    } else {
+        let nuevoListado = listadopPorHacer.filter(tarea => {
+            return tarea.completado == completado;
+        })
+        return nuevoListado;
+    }
 }
 
 const actualizar = (descripcion, completado = true) => {
